@@ -17,6 +17,38 @@ header {
     display: flex;
     justify-content: center;
     transition: all 0.5s;
+    /* flex-direction: column; */
+}
+
+.navlist {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.logoImg
+{
+    margin-left: 10px;
+}
+.nav-links {
+    text-decoration: none;
+    color: white;
+    padding: 0px 8px;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.nav-links:hover {
+    transition: all 0.5s;
+    text-shadow: 2px 2px 15px #58d2ff;
+    /* box-shadow: 0 0 0 3px rgb(81 88 168 / 25%); */
+}
+
+.nav-links-clicked
+{
+    transition: all 0.5s;
+    text-shadow: 2px 2px 15px #58d2ff;
 }
 
 .heading {
@@ -29,13 +61,13 @@ header {
 
 .heading h4 {
     margin: 0px 0px;
-    text-shadow:5px 5px 8px #58d2ff;
+    text-shadow: 2px 2px 15px #58d2ff;
     transition: all 0.5s;
 }
 
 .heading h2 {
     margin: 0px 0px;
-    text-shadow:5px 5px 8px #58d2ff;
+    text-shadow: 5px 5px 8px #58d2ff;
     transition: all 0.5s;
 }
 
@@ -288,17 +320,18 @@ header {
 #laughGif {
     transition: all 0.5s;
 }
-.laughGif-not-triggered
-{
+
+.laughGif-not-triggered {
     display: none;
     transition: all 0.5s;
 }
+
 .laughGif-triggered {
     display: block;
     transition: all 0.5s;
 }
-.gifDiv
-{
+
+.gifDiv {
     display: flex;
     justify-content: center;
 }

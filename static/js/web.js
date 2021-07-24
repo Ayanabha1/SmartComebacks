@@ -5,6 +5,21 @@ let i = 0;
 let show = document.getElementById("show");
 let clrbtn = document.getElementById("clr");
 let moreins = document.getElementById("moreins");
+let k = 3;
+let currPath = window.location.pathname;
+console.log(currPath);
+DomLoaded();
+
+let ins = document.getElementById("ins");
+let comps = document.getElementById("comps");
+if (currPath === "/" && !ins.classList.contains("nav-links-clicked")) {
+  ins.classList.add("nav-links-clicked");
+  comps.classList.remove("nav-links-clicked");
+}
+if (currPath === "/comps") {
+  comps.classList.add("nav-links-clicked");
+  ins.classList.remove("nav-links-clicked");
+}
 
 let speech = new SpeechSynthesisUtterance();
 let voiceOptions = document.getElementById("voiceOptions");
@@ -12,18 +27,37 @@ let volumeSlider = document.getElementById("volumeSlider");
 var voicesMap = [];
 let volOps = document.getElementById("volumeChange");
 
+let dec;
+
+if (currPath === '/') {
+  dec = randomInt(1,3);
+}
+else
+{
+  dec = randomInt(1,4);
+}
+
+let video = "vid" + dec;
+let audio = "laugh" + dec;
+
 let vBtn = document.getElementById("vBtn");
-let lasnd = document.getElementById("laugh");
+let lasnd = document.getElementById(audio);
 let lastVol;
 
 function volchange() {
   speech.volume = volumeSlider.value;
+  if (unmute.style.display === "none") {
+    unmute.style.display = "initial";
+    mute.style.display = "none";
+  }
 }
 
 let mute = document.getElementsByClassName("mute")[0];
 let unmute = document.getElementsByClassName("unmute")[0];
 vBtn.addEventListener("click", () => {
-  lasnd.pause();
+  if (currPath === "/") {
+    lasnd.pause();
+  }
   if (unmute.style.display !== "none") {
     mute.style.display = "initial";
     unmute.style.display = "none";
@@ -39,22 +73,22 @@ vBtn.addEventListener("click", () => {
   }
 });
 
-function loadVoices() {
-  let voices = speechSynthesis.getVoices();
-  for (let i = 0; i < voices.length; i++) {
-    let voice = voices[i];
-    voicesMap[voice.name] = voice;
-    let option = document.createElement("option");
-    option.value = voice.name;
-    option.innerHTML = voice.name;
-    voiceOptions.appendChild(option);
-    voicesMap[voice.name] = voice;
-  }
-}
+// function loadVoices() {
+//   let voices = speechSynthesis.getVoices();
+//   for (let i = 0; i < voices.length; i++) {
+//     let voice = voices[i];
+//     voicesMap[voice.name] = voice;
+//     let option = document.createElement("option");
+//     option.value = voice.name;
+//     option.innerHTML = voice.name;
+//     voiceOptions.appendChild(option);
+//     voicesMap[voice.name] = voice;
+//   }
+// }
 
-window.speechSynthesis.onvoiceschanged = function (e) {
-  loadVoices();
-};
+// window.speechSynthesis.onvoiceschanged = function (e) {
+//   loadVoices();
+// };
 
 function speak(textmsg) {
   speech.lang = "en-US";
@@ -67,21 +101,27 @@ function speak(textmsg) {
   window.speechSynthesis.speak(speech);
 }
 
+
 let mcont = document.getElementById("mcont");
-let gifSpace = document.getElementById("laughGif");
+let gifSpace = document.getElementById(video);
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 function ButtClicked(e) {
+  console.log(k);
   if (mcont.classList.contains("main-container-neon")) {
     mcont.classList.remove("main-container-neon");
   }
-  
-
 
   if (i == 0) {
     if (gifSpace.classList.contains("laughGif-triggered")) {
       gifSpace.classList.add("laughGif-not-triggered");
       gifSpace.classList.remove("laughGif-triggered");
-      lasnd.pause();
+      if (currPath === "/") {
+        lasnd.pause();
+      }
     }
   }
   window.speechSynthesis.cancel();
@@ -89,26 +129,52 @@ function ButtClicked(e) {
   let buttons = document.getElementById("buttons");
   if (name !== "") {
     mcont.classList.add("main-container-neon");
-    fetch(api_url)
-      .then((res) => res.json())
-      .then((data) => {
-        let msg = `${name} , ${data.insult}`;
-        show.innerHTML = msg;
-        buttons.style.display = "flex";
-        speak(msg);
-        volOps.style.display = "inherit";
-      });
+    if (currPath === "/") {
+      fetch(api_url)
+        .then((res) => res.json())
+        .then((data) => {
+          let msg = `${name} , ${data.insult}`;
+          show.innerHTML = msg;
+          buttons.style.display = "flex";
+          speak(msg);
+          volOps.style.display = "inherit";
+        });
+    } else {
+      fetch("https://complimentr.com/api")
+        .then((res) => res.json())
+        .then((data) => {
+          let msg = `${name} , ${data.compliment}`;
+          show.innerHTML = msg;
+          buttons.style.display = "flex";
+          speak(msg);
+          volOps.style.display = "inherit";
+        });
+    }
   } else {
     show.innerHTML = "";
     volOps.style.display = "none";
   }
 
-  if (i === 3) {
+  if (i === k) {
     i = -1;
     setTimeout(() => {
+      let temp ;
+      if (currPath === '/') {
+        temp = randomInt(1, 3);
+      }
+      else
+      {
+        temp = randomInt(1,4);
+      } 
+      video = "vid" + temp;
+      audio = "laugh" + temp;
+      console.log(video);
+      lasnd = document.getElementById(audio);
+      gifSpace = document.getElementById(video);
       gifSpace.classList.remove("laughGif-not-triggered");
       gifSpace.classList.add("laughGif-triggered");
-      if (unmute.style.display !== "none") {
+      k = randomInt(2, 5);
+      if (unmute.style.display !== "none" && currPath === "/") {
         lasnd.play();
       }
     }, 2500);
@@ -116,7 +182,7 @@ function ButtClicked(e) {
   if (name != "") {
     i++;
   }
-  console.log(i);
+  // console.log(i);
 }
 
 speech.onend = function removeneon(e) {
@@ -133,11 +199,15 @@ speech.onend = function removeneon(e) {
 };
 
 clrbtn.addEventListener("click", () => {
-  lasnd.pause();
+  if (currPath === "/") {
+    lasnd.pause();
+  }
   if (gifSpace.classList.contains("laughGif-triggered")) {
     gifSpace.classList.add("laughGif-not-triggered");
     gifSpace.classList.remove("laughGif-triggered");
-    lasnd.pause();
+    if (currPath === "/") {
+      lasnd.pause();
+    }
   }
 
   show.innerHTML = "";
@@ -161,3 +231,7 @@ document.getElementById("namei").onkeydown = function () {
     ButtClicked();
   }
 };
+
+function DomLoaded() {
+  window.speechSynthesis.cancel();
+}

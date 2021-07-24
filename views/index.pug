@@ -10,9 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body onload="DomLoaded()">
     <header class="header">
-      <a href=""><img src="../static/img/Logo.gif" alt="couldn't load the image"/></a>
+      <section class="header-components">
+        <a href="/" class="logoImg"><img src="../static/img/Logo.gif" alt="couldn't load the image"/></a>
+        <div class="navlist">
+          <span class="nav-items"><a href="/" class="nav-links" id="ins"  onclick="navClicked()">Insults</a></span>
+          <span class="nav-items"><a href="/comps" class="nav-links" id="comps" onclick="navClicked()">Compliments</a></span>
+        </div>
+        </nav>
+      </section>
+
     </header>
     <div class="heading">
       <h2>Feeling Motivated?</h2>
@@ -24,9 +32,17 @@
     </div>
     <div class="main-container" id="mcont">
       <p id="show"></p>
-      <div class="gifDiv"><img id="laughGif" src="../static/img/El_Risitas_Laugh.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
-      <audio id="laugh">
-        <source src="../static/img/El Risitas Laugh.mp3" type="audio/ogg">
+      <div class="gifDiv"><img id="vid1" src="../static/Laughs/InsGifs/vid1.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
+      <div class="gifDiv"><img id="vid2" src="../static/Laughs/InsGifs/vid2.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
+      <div class="gifDiv"><img id="vid3" src="../static/Laughs/InsGifs/vid3.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
+      <audio id="laugh1">
+        <source src="../static/Laughs/InsAuds/aud1.mp3" type="audio/ogg">
+      </audio>
+      <audio id="laugh2">
+        <source src="../static/Laughs/InsAuds/aud2.mp3" type="audio/ogg">
+      </audio>
+      <audio id="laugh3">
+        <source src="../static/Laughs/InsAuds/aud3.mp3" type="audio/ogg">
       </audio>
       <div id="sound_settings">
         <!-- <label>

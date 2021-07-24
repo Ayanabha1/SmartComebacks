@@ -8,28 +8,31 @@ const { TIMEOUT } = require("dns");
 
 
 
-app.use(
-    cors({
-        origin: '*',
-        credentials : true,
-        methods : ["GET" , "POST"]
-    })
-);
-// serving static files
+  // serving static files
+  
+  const hostname = "127.0.0.1";
 
-const hostname = "127.0.0.1";
-
-app.use("/static", express.static("static"));
-app.use(express.urlencoded());
-
-// set the template engine as pug
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
-
-// pug endpoint
-
-app.get("/", (req, res) => {
-  res.render("index");
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
+  app.use("/static", express.static("static"));
+  app.use(express.urlencoded());
+  
+  // set the template engine as pug
+  app.set("view engine", "pug");
+  app.set("views", path.join(__dirname, "views"));
+  
+  // pug endpoint
+  
+  app.get("/", (req, res) => {
+    res.render("index");
+    res.header("Access-Control-Allow-Origin", "*");
+});
+app.get("/comps", (req, res) => {
+  res.render("comps");
 });
 
 
