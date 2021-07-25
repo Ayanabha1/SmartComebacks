@@ -31,15 +31,17 @@ var voicesMap = [];
 let volOps = document.getElementById("volumeChange");
 let showRate = document.getElementById("showRate");
 let showPitch = document.getElementById("showPitch");
+let showVolume = document.getElementById('showVolume');
 
-showRate.innerHTML = rateSlider.value;
-showPitch.innerHTML = pitchSlider.value;
+showRate.innerHTML = rateSlider.value*100+"%";
+showPitch.innerHTML = pitchSlider.value*100+"%";
+showVolume.innerHTML = volumeSlider.value*100 + "%";
 
 rateSlider.addEventListener('change',()=>{
-  showRate.innerHTML = rateSlider.value;
+  showRate.innerHTML = rateSlider.value*100+"%";
 })
 pitchSlider.addEventListener('change',()=>{
-  showPitch.innerHTML = pitchSlider.value;
+  showPitch.innerHTML = pitchSlider.value*100+"%";
 })
 
 // rateSlider.addEventListener("mouseover",()=>{
@@ -65,6 +67,7 @@ let lastVol;
 
 function volchange() {
   speech.volume = volumeSlider.value;
+  showVolume.innerHTML = volumeSlider.value*100+"%";
   if (unmute.style.display === "none") {
     unmute.style.display = "initial";
     mute.style.display = "none";
@@ -85,11 +88,13 @@ vBtn.addEventListener("click", () => {
     speech.volume = 0;
     volumeSlider.value = 0;
     window.speechSynthesis.cancel();
+    showVolume.innerHTML = volumeSlider.value*0+"%";
   } else {
     unmute.style.display = "initial";
     mute.style.display = "none";
     speech.volume = lastVol;
     volumeSlider.value = lastVol;
+    showVolume.innerHTML = volumeSlider.value*100+"%";
   }
 });
 

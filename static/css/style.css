@@ -319,21 +319,27 @@ header {
     display: none;
 }
 
-#showPitch
-{
-    color: white;
-    background: rgb(116 118 119 / 17%);
-    padding: 0px 7px;
-    border-radius: 10px;
-}
-#showRate
-{
+#showPitch {
     color: white;
     background: rgb(116 118 119 / 17%);
     padding: 0px 7px;
     border-radius: 10px;
 }
 
+#showRate {
+    color: white;
+    background: rgb(116 118 119 / 17%);
+    padding: 0px 7px;
+    border-radius: 10px;
+}
+
+#showVolume {
+    color: white;
+    background: rgb(116 118 119 / 17%);
+    padding: 0px 7px;
+    border-radius: 10px;
+
+}
 
 #laughGif {
     transition: all 0.5s;
@@ -384,8 +390,8 @@ header {
     width: 25px;
     transition: all 0.5s;
 }
-#setImg:hover
-{
+
+#setImg:hover {
     transition: all 0.5s;
     transform: scale(1.2);
 }
@@ -469,8 +475,7 @@ header {
     border-bottom: 1px solid white;
 }
 
-.setopshead
-{
+.setopshead {
     color: white;
 }
 
