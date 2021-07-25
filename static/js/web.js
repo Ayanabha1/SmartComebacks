@@ -11,6 +11,7 @@ let currPath = window.location.pathname;
 // console.log(currPath);
 DomLoaded();
 
+
 let ins = document.getElementById("ins");
 let comps = document.getElementById("comps");
 if (currPath === "/" && !ins.classList.contains("nav-links-clicked")) {
@@ -63,6 +64,7 @@ let audio = "laugh" + dec;
 
 let vBtn = document.getElementById("vBtn");
 let lasnd = document.getElementById(audio);
+
 let lastVol;
 
 function volchange() {
@@ -259,11 +261,25 @@ moreins.addEventListener("click", () => {
   ButtClicked();
 });
 
+let repeat = document.getElementById("repeat");
+
+repeat.addEventListener('click',()=>{
+
+  if (!window.speechSynthesis.speaking) {
+    
+    speak("same gali ? Ok")
+    speak(show.innerHTML);
+  }
+
+})
+
 document.getElementById("namei").onkeydown = function () {
   if (window.event.keyCode == "13") {
     ButtClicked();
   }
 };
+
+
 
 function DomLoaded() {
   window.speechSynthesis.cancel();
@@ -282,3 +298,6 @@ setBtn.addEventListener('click',()=>{
     settCon.className = settCon.className.replace('vis','');
   }
 })
+
+let arrSet = ['settCon' , 'settMain' , 'setBtn' , 'setHead'];
+

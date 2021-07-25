@@ -232,6 +232,17 @@ header {
     transition: all 0.5s;
 }
 
+#repeat
+{
+    background-color: transparent;
+    color: grey;
+    border: 1px solid linen;
+    border-radius: 4px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
 #moreins:hover {
 
     border-color: #58d2ff;
