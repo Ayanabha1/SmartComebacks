@@ -10,7 +10,8 @@ body {
             rgb(66 66 66),
             rgb(80 80 80),
             rgb(101 101 101)) no-repeat center;
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content;
 }
 
 header {
@@ -25,10 +26,11 @@ header {
     display: flex;
     justify-content: space-between;
 }
-.logoImg
-{
+
+.logoImg {
     margin-left: 10px;
 }
+
 .nav-links {
     text-decoration: none;
     color: white;
@@ -45,8 +47,7 @@ header {
     /* box-shadow: 0 0 0 3px rgb(81 88 168 / 25%); */
 }
 
-.nav-links-clicked
-{
+.nav-links-clicked {
     transition: all 0.5s;
     text-shadow: 2px 2px 15px #58d2ff;
 }
@@ -79,7 +80,8 @@ header {
 
 .main-container {
     width: 50vw;
-    height: 30vh;
+    min-height: 250px;
+    height: fit-content;
     border: 2px solid linen;
     border-radius: 13px;
     margin: 27px auto;
@@ -334,4 +336,30 @@ header {
 .gifDiv {
     display: flex;
     justify-content: center;
+}
+
+#gocomps {
+    margin-top: 22px;
+
+}
+
+.gocomp {
+    color: white;
+    transition: all 0.5s;
+}
+
+.gocomp:hover {
+    transition: all 0.5s;
+    width: fit-content;
+    margin: auto;
+    background: rgb(0, 0, 0, 0.3);
+    border-radius: 13px;
+    padding: 2px 14px;
+}
+
+#settings
+{
+    position: absolute;
+    right: 53px;
+    top: 22px;
 }

@@ -6,6 +6,7 @@ let show = document.getElementById("show");
 let clrbtn = document.getElementById("clr");
 let moreins = document.getElementById("moreins");
 let k = 3;
+let cli = 0;
 let currPath = window.location.pathname;
 console.log(currPath);
 DomLoaded();
@@ -110,6 +111,11 @@ function randomInt(min, max) {
 }
 
 function ButtClicked(e) {
+  let gocomps = document.getElementById('gocomps');
+  cli++;
+  if (cli === 10) {
+    gocomps.innerHTML = "<a href = '/comps' class='gocomp' >Get some compliments</a>"
+  }
   console.log(k);
   if (mcont.classList.contains("main-container-neon")) {
     mcont.classList.remove("main-container-neon");

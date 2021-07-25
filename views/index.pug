@@ -16,19 +16,19 @@
         <a href="/" class="logoImg"><img src="../static/img/Logo.gif" alt="couldn't load the image"/></a>
         <div class="navlist">
           <span class="nav-items"><a href="/" class="nav-links" id="ins"  onclick="navClicked()">Insults</a></span>
-          <span class="nav-items"><a href="/comps" class="nav-links" id="comps" onclick="navClicked()">Compliments</a></span>
+          <span class="nav-items"><a title="Click to get complimented" href="/comps" class="nav-links" id="comps" onclick="navClicked()">Compliments</a></span>
         </div>
         </nav>
       </section>
-
+      <div id="settings"><img src="../static/img/settings.png" alt="icon not found" id="setIcon"></div>
     </header>
     <div class="heading">
       <h2>Feeling Motivated?</h2>
       <h4>Let's walk you down your darkest alleys</h4>
     </div>
     <div class="inp-name">
-      <input type="text" placeholder="Enter your name" id="namei" />
-      <button type="submit" id="butti" onclick="ButtClicked()">GO</button>
+      <input title="Kisko chul machi hein ?" type="text" placeholder="Enter your name" id="namei" />
+      <button title="Get insulted" type="submit" id="butti" onclick="ButtClicked()">GO</button>
     </div>
     <div class="main-container" id="mcont">
       <p id="show"></p>
@@ -50,15 +50,17 @@
           <select id="voiceOptions"></select>
         </label> -->
         <label id="volumeChange">
-          <button class="vbtn" id="vBtn"><img src="../static/img/unmute.png" alt="" style="width : 17px;display: initial;" class="unmute"><img src="../static/img/mute.png" alt="" style="width : 17px; display: none;" class="mute"></button>
-          <input class="slider" type="range" id="volumeSlider" min = "0" max = "1" value = "0.5" step = "0.1" onchange="volchange()">
+          <button class="vbtn" id="vBtn"><img title="Mute" src="../static/img/unmute.png" alt="" style="width : 17px;display: initial;" class="unmute"><img title="Unmute" src="../static/img/mute.png" alt="" style="width : 17px; display: none;" class="mute"></button>
+          <input class="slider" title="Slide to change volume" type="range" id="volumeSlider" min = "0" max = "1" value = "0.5" step = "0.1" onchange="volchange()">
         </label>
       </div>
       <div id="buttons">
-        <button id="moreins">Get more insults</button>
-        <button id="clr">Clear</button>
+        <button id="moreins" title="Aur gaali sunna hei ?">Get more insults</button>
+        <button title="Clear the box" id="clr">Clear</button>
       </div>
+      <span id="gocomps"></span>
     </div>
+
 
     <script src="../static/js/web.js"></script>
   </body>
