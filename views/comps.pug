@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InsultU</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
+  </head>
+  <body onload="DomLoaded()">
+    <header class="header">
+      <section class="header-components">
+        <a href="/rimbomisra/InsultU/views/index.pug" class="logoImg"><img src="../static/img/Logo.gif" alt="couldn't load the image"/></a>
+        <div class="navlist">
+          <span class="nav-items"><a title="Get Insulted" href="/rimbomisra/InsultU/views/index.pug" class="nav-links" id="ins">Insults</a></span>
+          <span class="nav-items"><a href="/rimbomisra/InsultU/views/comps.pug" class="nav-links" id="comps">Compliments</a></span>
+        </div>
+        </nav>
+      </section>
+      <div id="settings" title="Click to open settings"><button id="setBtn"><img id="setImg" src="../static/img/settings.png" alt="icon not found" id="setIcon"></button></div>
+    </header>
+    <div class="heading">
+      <h2>Feeling Demotivated?</h2>
+      <h4>Believe in yourself! Have faith in your abilities! Without a humble but reasonable confidence in your own powers, you cannot be successful or happy</h4>
+    </div>
+    <div class="inp-name">
+      <input title="Kisko tareef sunna hein?" type="text" placeholder="Enter your name" id="namei" />
+      <button title="Let's get you on cloud 9" type="submit" id="butti" onclick="ButtClicked()">GO</button>
+    </div>
+    <div class="main-container" id="mcont">
+      <p id="show"></p>
+      <div class="gifDiv"><img id="vid1" src="../static/Compliments/vid1.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
+      <div class="gifDiv"><img id="vid2" src="../static/Compliments/vid2.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
+      <div class="gifDiv"><img id="vid3" src="../static/Compliments/vid3.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
+      <div class="gifDiv"><img id="vid4" src="../static/Compliments/vid4.gif" alt="" style="width: 240px;" class = 'laughGif-not-triggered'></div>
+      <audio id="laugh">
+        <source src="../static/img/El Risitas Laugh.mp3" type="audio/ogg">
+      </audio>
+      <div id="sound_settings">
+        <!-- <label>
+          <span>Voice</span>
+          <select id="voiceOptions"></select>
+        </label> -->
+        <label id="volumeChange">
+          <button class="vbtn" id="vBtn"><img title="Mute" src="../static/img/unmute.png" alt="" style="width : 17px;display: initial;" class="unmute"><img title="Unmute" src="../static/img/mute.png" alt="" style="width : 17px; display: none;" class="mute"></button>
+          <input title="Slide to change volume" class="slider" type="range" id="volumeSlider" min = "0" max = "1" value = "0.5" step = "0.1" onchange="volchange()">
+          <span id="showVolume"></span>
+        </label>
+      </div>
+      <div id="buttons">
+        <button title="Kitni tareef sunoge bhaiyya?" id="moreins">Get more compliments</button>
+        <button id="repeat" title="Phirse same tareef?">Repeat</button>
+        <button title="Clear the box" id="clr">Clear</button>
+      </div>
+    </div>
+    <section id="settCon">
+      <div id="settMain"> 
+        <p id="settHead">Settings</p>
+        <div class="setOps">
+          <label>
+              <span class="setopshead">Voice</span>
+              <select id="voiceOptions"></select>
+          </label>
+        </div>
+        <div class="setOps">
+          <label>
+              <p style="margin: 0;" class="setopshead">Pitch</p>
+              <input class="slider" title="Slide to change rate" type="range" id="pitchSlider" min="0" max="1" value="0.5" step="0.1">
+              <span id="showPitch"></span>
+          </label>
+        </div>
+        <div class="setOps">
+          <label>
+              <p style="margin: 0;" class="setopshead">Rate</p>
+              <input class="slider" title="Slide to change pitch" type="range" id="rateSlider" min="0" max="1" value="1" step="0.1">
+              <span id="showRate"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <script src="../static/js/web.js"></script>
+  </body>
+</html>
