@@ -319,6 +319,22 @@ header {
     display: none;
 }
 
+#showPitch
+{
+    color: white;
+    background: rgb(116 118 119 / 17%);
+    padding: 0px 7px;
+    border-radius: 10px;
+}
+#showRate
+{
+    color: white;
+    background: rgb(116 118 119 / 17%);
+    padding: 0px 7px;
+    border-radius: 10px;
+}
+
+
 #laughGif {
     transition: all 0.5s;
 }
@@ -357,9 +373,107 @@ header {
     padding: 2px 14px;
 }
 
-#settings
-{
+#settings {
     position: absolute;
-    right: 53px;
+    right: 17px;
     top: 22px;
+    z-index: 5;
+}
+
+#setImg {
+    width: 25px;
+    transition: all 0.5s;
+}
+#setImg:hover
+{
+    transition: all 0.5s;
+    transform: scale(1.2);
+}
+
+#setBtn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+#settCon {
+    position: fixed;
+    right: 0px;
+    height: 100vh;
+    top: 0px;
+    width: 291px;
+    background: rgb(51, 51, 51, 0.9);
+    border: 1px solid white;
+    border-radius: 37px;
+    visibility: hidden;
+    animation: fadeout 0.5s;
+    transition: all 0.5s;
+}
+
+#settCon.vis {
+    transition: all 0.5s;
+    visibility: visible;
+    animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+    0% {
+        right: 0;
+        opacity: 0;
+    }
+
+    50% {
+        right: 60px;
+        opacity: 0.2
+    }
+
+    750% {
+        right: 30px;
+        opacity: 0.7
+    }
+
+    100% {
+        right: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        right: 30px;
+        opacity: 1;
+    }
+
+    50% {
+        right: 100px;
+        opacity: 0.5;
+    }
+
+    100% {
+        right: 0px;
+        opacity: 0;
+    }
+}
+
+#settMain {
+    position: absolute;
+    top: 75px;
+    left: 31px;
+    min-width: 235px;
+}
+
+#settHead {
+    color: white;
+    font-size: 24px;
+    width: 124px;
+    border-bottom: 1px solid white;
+}
+
+.setopshead
+{
+    color: white;
+}
+
+.setOps {
+    margin-bottom: 40px;
 }

@@ -8,7 +8,7 @@ let moreins = document.getElementById("moreins");
 let k = 3;
 let cli = 0;
 let currPath = window.location.pathname;
-console.log(currPath);
+// console.log(currPath);
 DomLoaded();
 
 let ins = document.getElementById("ins");
@@ -25,8 +25,26 @@ if (currPath === "/comps") {
 let speech = new SpeechSynthesisUtterance();
 let voiceOptions = document.getElementById("voiceOptions");
 let volumeSlider = document.getElementById("volumeSlider");
+let pitchSlider = document.getElementById("pitchSlider");
+let rateSlider = document.getElementById("rateSlider");
 var voicesMap = [];
 let volOps = document.getElementById("volumeChange");
+let showRate = document.getElementById("showRate");
+let showPitch = document.getElementById("showPitch");
+
+showRate.innerHTML = rateSlider.value;
+showPitch.innerHTML = pitchSlider.value;
+
+rateSlider.addEventListener('change',()=>{
+  showRate.innerHTML = rateSlider.value;
+})
+pitchSlider.addEventListener('change',()=>{
+  showPitch.innerHTML = pitchSlider.value;
+})
+
+// rateSlider.addEventListener("mouseover",()=>{
+//   rateSlider.setAttribute("title",rateSlider.value);
+// })
 
 let dec;
 
@@ -53,6 +71,7 @@ function volchange() {
   }
 }
 
+
 let mute = document.getElementsByClassName("mute")[0];
 let unmute = document.getElementsByClassName("unmute")[0];
 vBtn.addEventListener("click", () => {
@@ -74,32 +93,35 @@ vBtn.addEventListener("click", () => {
   }
 });
 
-// function loadVoices() {
-//   let voices = speechSynthesis.getVoices();
-//   for (let i = 0; i < voices.length; i++) {
-//     let voice = voices[i];
-//     voicesMap[voice.name] = voice;
-//     let option = document.createElement("option");
-//     option.value = voice.name;
-//     option.innerHTML = voice.name;
-//     voiceOptions.appendChild(option);
-//     voicesMap[voice.name] = voice;
-//   }
-// }
+function loadVoices() {
+  let voices = speechSynthesis.getVoices();
+  for (let i = 0; i < voices.length; i++) {
+    let voice = voices[i];
+    voicesMap[voice.name] = voice;
+    let option = document.createElement("option");
+    option.value = voice.name;
+    option.innerHTML = voice.name;
+    voiceOptions.appendChild(option);
+    voicesMap[voice.name] = voice;
+  }
+}
 
-// window.speechSynthesis.onvoiceschanged = function (e) {
-//   loadVoices();
-// };
+window.speechSynthesis.onvoiceschanged = function (e) {
+  loadVoices();
+};
 
 function speak(textmsg) {
   speech.lang = "en-US";
-  // speech.voice = voicesMap[voiceOptions.value];
   speech.text = textmsg;
   speech.volume = volumeSlider.value;
-  speech.rate = 1;
-  speech.pitch = 0.4;
+  speech.rate = rateSlider.value;
+  speech.pitch = pitchSlider.value;
 
   window.speechSynthesis.speak(speech);
+}
+
+voiceOptions.onchange = ()=>{
+  speech.voice = voicesMap[voiceOptions.value];
 }
 
 
@@ -116,7 +138,7 @@ function ButtClicked(e) {
   if (cli === 10) {
     gocomps.innerHTML = "<a href = '/comps' class='gocomp' >Get some compliments</a>"
   }
-  console.log(k);
+  // console.log(k);
   if (mcont.classList.contains("main-container-neon")) {
     mcont.classList.remove("main-container-neon");
   }
@@ -241,3 +263,17 @@ document.getElementById("namei").onkeydown = function () {
 function DomLoaded() {
   window.speechSynthesis.cancel();
 }
+
+let setBtn = document.getElementById('setBtn');
+
+setBtn.addEventListener('click',()=>{
+  // console.log('settings');
+  let settCon = document.getElementById('settCon');
+  if (settCon.className === '') {
+    settCon.className = settCon.className.replace('','vis');
+  }
+  else
+  {
+    settCon.className = settCon.className.replace('vis','');
+  }
+})
