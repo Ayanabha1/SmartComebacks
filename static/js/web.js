@@ -161,7 +161,7 @@ function ButtClicked(e) {
     mcont.classList.remove("main-container-neon");
   }
 
-  if (i == 0) {
+  if (i >= 0 && i<k) {
     if (gifSpace.classList.contains("laughGif-triggered")) {
       gifSpace.classList.add("laughGif-not-triggered");
       gifSpace.classList.remove("laughGif-triggered");
