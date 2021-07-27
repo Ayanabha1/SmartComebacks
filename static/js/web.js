@@ -8,6 +8,8 @@ let moreins = document.getElementById("moreins");
 let k = 3;
 let cli = 0;
 let currPath = window.location.pathname;
+let prevrand = -1;
+let randChoice = -1;
 console.log(currPath);
 DomLoaded();
 
@@ -23,11 +25,15 @@ if (currPath === "/rimbomisra/InsultU/views/comps.pug") {
 }
 
 if (currPath === "/rimbomisra/InsultU/views/index.pug") {
-  window.addEventListener('load',()=>{
+  window.addEventListener("load", () => {
     var x = document.getElementById("snackbar");
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-  })
+  
+      // Add the "show" class to DIV
+      x.className = "show";
+    
+      // After 3 seconds, remove the show class from DIV
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  });
 }
 
 let speech = new SpeechSynthesisUtterance();
@@ -170,11 +176,15 @@ function ButtClicked(e) {
   if (name !== "") {
     mcont.classList.add("main-container-neon");
     if (currPath === "/rimbomisra/InsultU/views/index.pug") {
-      fetch(api_url)
-        .then((res) => res.json())
+      fetch("../static/js/Insults.json")
+        .then((datas) => datas.json())
         .then((data) => {
-          let msg = `${name} , ${data.insult}`;
+          while (prevrand === randChoice) {
+            randChoice = randomInt(0, data.insults.length);
+          }
+          let msg = `${name} , ${data.insults[randChoice]}`;
           show.innerHTML = msg;
+          prevrand = randChoice;
           buttons.style.display = "flex";
           speak(msg);
           volOps.style.display = "inherit";
@@ -308,3 +318,13 @@ repeat.addEventListener('click',()=>{
 
 })
 
+window.addEventListener('click',(e)=>{
+  if (settCon.className === 'vis') {
+    let cursAt = e.clientX;
+    let setpos = screen.width - document.getElementById('settCon').offsetWidth;
+
+    if (cursAt<setpos) {
+      setBtn.click();
+    }
+  }
+})
