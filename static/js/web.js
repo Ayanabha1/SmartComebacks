@@ -15,16 +15,16 @@ DomLoaded();
 
 let ins = document.getElementById("ins");
 let comps = document.getElementById("comps");
-if (currPath === "/rimbomisra/InsultU/views/index.pug" && !ins.classList.contains("nav-links-clicked")) {
+if (currPath === "/" && !ins.classList.contains("nav-links-clicked")) {
   ins.classList.add("nav-links-clicked");
   comps.classList.remove("nav-links-clicked");
 }
-if (currPath === "/rimbomisra/InsultU/views/comps.pug") {
+if (currPath === "/comps.pug") {
   comps.classList.add("nav-links-clicked");
   ins.classList.remove("nav-links-clicked");
 }
 
-if (currPath === "/rimbomisra/InsultU/views/index.pug") {
+if (currPath === "/index.pug") {
   window.addEventListener("load", () => {
     var x = document.getElementById("snackbar");
   

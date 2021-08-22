@@ -14,10 +14,10 @@
     
     <header class="header">
       <section class="header-components">
-        <a href="/rimbomisra/InsultU/views/index.pug" class="logoImg"><img src="../static/img/Logo.gif" alt="couldn't load the image"/></a>
+        <a href="/" class="logoImg"><img src="../static/img/Logo.gif" alt="couldn't load the image"/></a>
         <div class="navlist">
-          <span class="nav-items"><a href="/rimbomisra/InsultU/views/index.pug" class="nav-links" id="ins"  onclick="navClicked()">Insults</a></span>
-          <span class="nav-items"><a title="Click to get complimented" href="/rimbomisra/InsultU/views/comps.pug" class="nav-links" id="comps" onclick="navClicked()">Compliments</a></span>
+          <span class="nav-items"><a href="/" class="nav-links" id="ins"  onclick="navClicked()">Insults</a></span>
+          <span class="nav-items"><a title="Click to get complimented" href="/comps.pug" class="nav-links" id="comps" onclick="navClicked()">Compliments</a></span>
         </div>
         </nav>
       </section>
@@ -56,8 +56,7 @@
         </label> -->
         <label id="volumeChange">
           <button class="vbtn" id="vBtn"><img title="Mute" src="../static/img/unmute.png" alt="" style="width : 17px;display: initial;" class="unmute"><img title="Unmute" src="../static/img/mute.png" alt="" style="width : 17px; display: none;" class="mute"></button>
-          <input class="slider" title="Slide to change volu
-          me" type="range" id="volumeSlider" min = "0" max = "1" value = "0.5" step = "0.1" onchange="volchange()">
+          <input class="slider" title="Slide to change volume" type="range" id="volumeSlider" min = "0" max = "1" value = "0.5" step = "0.1" onchange="volchange()">
           <span id="showVolume"></span>
         </label>
       </div>

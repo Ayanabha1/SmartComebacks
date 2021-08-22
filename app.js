@@ -21,11 +21,11 @@ app.set("views", path.join(__dirname, "views"));
 
 // pug endpoint
 
-app.get("/rimbomisra/InsultU/views/index.pug", (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
   // res.header("Access-Control-Allow-Origin", "*");
 });
-app.get("/rimbomisra/InsultU/views/comps.pug", (req, res) => {
+app.get("/comps.pug", (req, res) => {
   res.render("comps");
 });
 
